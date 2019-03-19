@@ -4,12 +4,8 @@ import java.io.Serializable;
 
 public class Estudiante implements Serializable {
 
-    private String cedula;
-    private String nombre;
+    private String cedula, nombre, email, fechaNacimiento, carrera;
     private int telefono;
-    private String email;
-    private String fechaNacimiento;
-    private String carrera;
 
     public Estudiante(String cedula, String nombre, int telefono, String email, String fechaNacimiento, String carrera) {
         this.cedula = cedula;
@@ -66,18 +62,6 @@ public class Estudiante implements Serializable {
 
     public void setCarrera(String carrera) {
         this.carrera = carrera;
-    }
-
-    @Override
-    public String toString() {
-        return "Alumno{" +
-                "cedula='" + cedula + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", telefono=" + telefono +
-                ", email='" + email + '\'' +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                ", carrera='" + carrera + '\'' +
-                '}';
     }
 
     @Override

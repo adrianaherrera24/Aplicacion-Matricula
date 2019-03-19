@@ -10,8 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
+import com.example.aplicacion.Adapter.CarreraAdapter;
+import com.example.aplicacion.Adapter.CursoAdapter;
 import com.example.aplicacion.Adapter.EstudianteAdapter;
+import com.example.aplicacion.Adapter.ProfesorAdapter;
 import com.example.aplicacion.LogicaNegocio.Estudiante;
+import com.example.aplicacion.LogicaNegocio.Profesor;
 
 // CLASE PARA LOS DESPLAZAMIENTOS Y MOVIMIENTOS DE LA PANTALLA
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback{
@@ -61,6 +65,18 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback{
                 backgroundViewEdit = ((EstudianteAdapter.MyViewHolder) viewHolder).vistaEditar;
                 backgroundViewDelete = ((EstudianteAdapter.MyViewHolder) viewHolder).vistaBorrar;
                 foregroundView = ((EstudianteAdapter.MyViewHolder) viewHolder).vistaPrincipal;
+            } else if (this.listener.getClass().getSimpleName().equals("AdmCarreraActivity")) {
+                backgroundViewEdit = ((CarreraAdapter.MyViewHolder) viewHolder).vistaEditar;
+                backgroundViewDelete = ((CarreraAdapter.MyViewHolder) viewHolder).vistaBorrar;
+                foregroundView = ((CarreraAdapter.MyViewHolder) viewHolder).vistaPrincipal;
+            } else if (this.listener.getClass().getSimpleName().equals("AdmProfesorActivity")) {
+                backgroundViewEdit = ((ProfesorAdapter.MyViewHolder) viewHolder).vistaEditar;
+                backgroundViewDelete = ((ProfesorAdapter.MyViewHolder) viewHolder).vistaBorrar;
+                foregroundView = ((ProfesorAdapter.MyViewHolder) viewHolder).vistaPrincipal;
+            } else if (this.listener.getClass().getSimpleName().equals("AdmCursoActivity")) {
+                backgroundViewEdit = ((CursoAdapter.MyViewHolder) viewHolder).vistaEditar;
+                backgroundViewDelete = ((CursoAdapter.MyViewHolder) viewHolder).vistaBorrar;
+                foregroundView = ((CursoAdapter.MyViewHolder) viewHolder).vistaPrincipal;
             }
 
             //Selected item

@@ -1,36 +1,37 @@
 package com.example.aplicacion.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import com.example.aplicacion.AccesoDatos.ModeloDatos;
-import com.example.aplicacion.Adapter.EstudianteAdapter;
+import com.example.aplicacion.Adapter.CursoAdapter;
 import com.example.aplicacion.Helper.RecyclerItemTouchHelper;
-import com.example.aplicacion.LogicaNegocio.Estudiante;
+import com.example.aplicacion.LogicaNegocio.Curso;
 import com.example.aplicacion.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdmEstudianteActivity extends AppCompatActivity
-        implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, EstudianteAdapter.EstudianteAdapterListener {
+public class AdmCursoActivity extends AppCompatActivity
+        implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, CursoAdapter.CursoAdapterListener{
 
     private RecyclerView mRecyclerView;
-    private EstudianteAdapter mAdapter;
-    private List<Estudiante> listaEstudiantes;
+    private CursoAdapter mAdapter;
+    private List<Curso> listaCursos;
     private CoordinatorLayout coordinatorLayout;
     private SearchView searchView;
     private FloatingActionButton fab;
@@ -39,18 +40,18 @@ public class AdmEstudianteActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adm_estudiante);
-        Toolbar toolbar = findViewById(R.id.toolbarEstudiante);
+        setContentView(R.layout.activity_adm_curso);
+        Toolbar toolbar = findViewById(R.id.toolbarCurso);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("Estudiantes"); // Para el titulo del activity
+        getSupportActionBar().setTitle("Cursos"); // Para el titulo del activity
 
-        mRecyclerView = findViewById(R.id.recycler_estudiante); // llamo al recyclerView a utilizar
-        listaEstudiantes = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.recycler_curso); // llamo al recyclerView a utilizar
+        listaCursos = new ArrayList<>();
         modelo = new ModeloDatos();
-        listaEstudiantes = modelo.getListaEstudiantes();
-        mAdapter = new EstudianteAdapter(listaEstudiantes, this);
-        coordinatorLayout = findViewById(R.id.coordinator_layoutA);
+        listaCursos = modelo.getListaCursos();
+        mAdapter = new CursoAdapter(listaCursos, this);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout_Curso);
 
         // Para la barra de notificacion
         whiteNotificationBar(mRecyclerView); // metodo de la clase
@@ -61,18 +62,18 @@ public class AdmEstudianteActivity extends AppCompatActivity
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
 
-        // Boton de esquina inferior derecha
-       /* fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Agregar alumno.", Toast.LENGTH_LONG).show();
+                Snackbar.make(view, "Agregar Curso", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-        }); */
+        });
 
         // Swiping left and right
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
-
 
         // Para refrescar las vistas
         mAdapter.notifyDataSetChanged();
@@ -120,9 +121,9 @@ public class AdmEstudianteActivity extends AppCompatActivity
         }
     }
 
-    // Nace de la implementacion de EstudianteAdapter y listener
+    // Nace de la implementacion de CursoAdapter y listener
     @Override
-    public void onContactSelected(Estudiante alumno) {
+    public void onContactSelected(Curso curso) {
 
     }
 }

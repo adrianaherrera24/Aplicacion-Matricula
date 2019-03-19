@@ -20,4 +20,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_adm_estudiante">AdmEstudiante</string>
+    <string name="title_activity_adm_carrera">AdmCarreraActivity</string>
+    <string name="title_activity_adm_profesor">AdmProfesorActivity</string>
+    <string name="title_activity_adm_curso">AdmCursoActivity</string>
 </resources>

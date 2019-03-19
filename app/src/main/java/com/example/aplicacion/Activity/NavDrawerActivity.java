@@ -89,10 +89,13 @@ public class NavDrawerActivity extends AppCompatActivity
             abrirAdmEstudiante();
         } else if (id == R.id.nav_carrera) {
             Toast.makeText(getApplicationContext(), "Modulo Carrera", Toast.LENGTH_SHORT).show();
+            abrirAdmCarrera();
         } else if (id == R.id.nav_curso) {
             Toast.makeText(getApplicationContext(), "Modulo Curso", Toast.LENGTH_SHORT).show();
+            abrirAdmCurso();
         } else if (id == R.id.nav_profesor) {
             Toast.makeText(getApplicationContext(), "Modulo Profesor", Toast.LENGTH_SHORT).show();
+            abrirAdmProfesor();
         } else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
             abrirLogin();
@@ -115,5 +118,22 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    // Direcciona hacia el recycleView de Carrera
+    public void abrirAdmCarrera() {
+        Intent intent = new Intent(this, AdmCarreraActivity.class);
+        startActivity(intent);
+    }
+
+    // Direcciona hacia el recycleView de Carrera
+    public void abrirAdmProfesor() {
+        Intent intent = new Intent(this, AdmProfesorActivity.class);
+        startActivity(intent);
+    }
+
+    // Direcciona hacia el recycleView de Carrera
+    public void abrirAdmCurso() {
+        Intent intent = new Intent(this, AdmCursoActivity.class);
+        startActivity(intent);
+    }
 
 }
